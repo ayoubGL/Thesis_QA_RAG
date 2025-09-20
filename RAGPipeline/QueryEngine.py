@@ -1,5 +1,5 @@
 from llama_index.core.query_engine import RetrieverQueryEngine
-from llama_index.llms.ollama import Ollama
+
 from typing import Any, List
 
 
@@ -9,24 +9,18 @@ class QueryEngine:
         self,
         llm: str,
         retriever: Any,
-        query: str
+        query: str,
+        initOllama: Any
        
     ):
         self._llm = llm
         self._retriever = retriever
         self._query = query
     
-    def _response(self):
+    def get_response(self):
         try:
-            # Call ollama model
-            llm_ol = Ollama(
-                model = self._llm,
-                request_timeout = 120,
-                context_window=8000
-            )
-            
-            query_engine =RetrieverQueryEngine.from_args(self._retriever, 
-                                            llm=llm_ol)
+            query_engine = RetrieverQueryEngine.from_args(self._retriever, 
+                                            llm=self._initOllama)
             answer = query_engine.query(self._query)
             return answer
         except Exception as e:

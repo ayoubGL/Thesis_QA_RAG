@@ -16,8 +16,8 @@ class Retriever(BaseRetriever):
         similarity_top_k : int = 20
     )-> None:
         """Init parameter """
-        self._vector_Store = vector_store,
-        self._embed_model = embed_model,
+        self._vector_store = vector_store
+        self._embed_model = embed_model
         self._query_mode = query_mode
         self._similarity_top_k = similarity_top_k
         super().__init__()

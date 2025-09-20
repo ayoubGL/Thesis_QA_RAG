@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 # page config
 
 st.set_page_config(page_title = "Thesis defense  Assistant")

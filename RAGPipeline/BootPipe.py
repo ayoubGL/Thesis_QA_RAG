@@ -5,8 +5,27 @@ from DBConnect import Connector
 from configparser import ConfigParser
 from Retriever import Retriever
 import time
+from llama_index.llms.ollama import Ollama
 
-def initialize_pipeline(doc_path="./pdf/thesis.pdf", chunk_size=1024):
+
+
+
+def initialize_pipeline(doc_path:str,  llm_str:str, chunk_size=1024,):
+    """"
+        Pipeline initializer that ensure that everything done only once, not for every user query
+        Args:
+            docs_path : document path
+            llm_str: LLM of choice, check Ollama
+            Chunk_size: size of chunks for docs.
+    
+        return:
+            retriever: retriver instance 
+            llm: running instance of ollama
+    """
+
+
+
+
     print("Chunking docs...")
     chunker = TextChunker(doc_path, chunk_size)
     text_nodes = chunker._Data_node()
@@ -40,5 +59,17 @@ def initialize_pipeline(doc_path="./pdf/thesis.pdf", chunk_size=1024):
         similarity_top_k=20
     )
 
+    # Initialize the Ollama Model
+    OllamaLm =  Ollama(
+                model = llm_str,
+                request_timeout = 120,
+                context_window=8000
+            )
+    
+    
     print("Pipeline initialized successfully!")
-    return retriever
+    
+    
+    
+    
+    return retriever, OllamaLm
