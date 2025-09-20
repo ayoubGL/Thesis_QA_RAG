@@ -13,7 +13,7 @@ class Retriever(BaseRetriever):
         vector_store: PGVectorStore,
         embed_model: Any,
         query_mode: str = "default",
-        similarity_top_k : int = 20
+        similarity_top_k : int = 40
     )-> None:
         """Init parameter """
         self._vector_store = vector_store

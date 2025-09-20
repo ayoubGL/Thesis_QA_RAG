@@ -45,7 +45,7 @@ class TextChunker:
         
         return text_chunk, doc_idxs
     
-    def _Data_node(self):
+    def _data_node(self):
         nodes = []
         text_chunk, doc_idxs = self._chunk_doc()
         docs = self._load_doc()

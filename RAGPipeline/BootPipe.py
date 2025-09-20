@@ -1,9 +1,9 @@
 # setup_pipeline.py
-from Chunker import TextChunker
-from NodeEmbedder import Embedder
-from DBConnect import Connector
+from RAGPipeline.Chunker import TextChunker
+from RAGPipeline.NodeEmbedder import Embedder
+from RAGPipeline.DBConnect import Connector
 from configparser import ConfigParser
-from Retriever import Retriever
+from RAGPipeline.Retriever import Retriever
 import time
 from llama_index.llms.ollama import Ollama
 
@@ -28,7 +28,7 @@ def initialize_pipeline(doc_path:str,  llm_str:str, chunk_size=1024,):
 
     print("Chunking docs...")
     chunker = TextChunker(doc_path, chunk_size)
-    text_nodes = chunker._Data_node()
+    text_nodes = chunker._data_node()
     time.sleep(1)
 
     print("Constructing and building text embeddings...")
@@ -38,7 +38,7 @@ def initialize_pipeline(doc_path:str,  llm_str:str, chunk_size=1024,):
 
     print("Storing in Vector Database...")
     config = ConfigParser()
-    config.read("db_config.ini")
+    config.read("./Config/db_config.ini")
 
     connect = Connector(
         config["database"]["databasename"],

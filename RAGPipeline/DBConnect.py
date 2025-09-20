@@ -1,7 +1,7 @@
 from sqlalchemy.engine import make_url
 from llama_index.vector_stores.postgres import PGVectorStore
 import psycopg2
-import NodeEmbedder as NodeEmbedder  
+import RAGPipeline.NodeEmbedder as NodeEmbedder  
 
 
 class Connector:

@@ -1,5 +1,4 @@
 from llama_index.core.query_engine import RetrieverQueryEngine
-
 from typing import Any, List
 
 
@@ -7,15 +6,14 @@ class QueryEngine:
     
     def __init__(
         self,
-        llm: str,
         retriever: Any,
         query: str,
         initOllama: Any
        
     ):
-        self._llm = llm
         self._retriever = retriever
         self._query = query
+        self._initOllama = initOllama
     
     def get_response(self):
         try:
