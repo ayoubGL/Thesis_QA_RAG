@@ -1,14 +1,15 @@
 # Thesis RAG
 
-This project implements a Retrieval-Augmented Generation (RAG) pipeline locally for answering questions directly related to my PhD thesis. Based on mainly on #LlamaIndex, #Ollama and #Streamlit
-
+This project implements a Retrieval-Augmented Generation (RAG) pipeline locally for answering questions directly related to my PhD thesis. 
 
 ### Purpose
 A personalized RAG assistant built with LlamaIndex, Ollama, and Streamlit, designed to help me explore, question, and prepare for my PhD thesis defense. 
     
-A Build a personal research assistant capable of retrieving and explaining complex concepts from my thesis material.
+You can Build a personal research assistant capable of retrieving and explaining complex concepts from you documents
 
+# Pipeline
 
+![Pipeline](static/thesis_RAG.png)
 
 It combines:
 
@@ -17,11 +18,6 @@ It combines:
 - Embedding-based similarity search to identify and connect related content
 - Large Language Models (LLMs) for advanced understanding and generation of text
 - User interface (UI) for intuitive interaction and seamless workflow
-# Pipeline
-**This pipeline serves as a practical way to dive deeper into AI. It lets me learn, experiment, and apply the latest AI tools in real-world scenarios, truly turning knowledge into action. ⭐**
-
-![Pipeline](static/thesis_RAG.png)
-
 
 
 # Architecture and modules
