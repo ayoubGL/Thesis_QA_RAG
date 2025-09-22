@@ -73,3 +73,12 @@ def initialize_pipeline(doc_path:str,  llm_str:str, chunk_size=1024,):
     
     
     return retriever, OllamaLm
+
+
+def boot_pipe():
+    llm_str = "llama3.1"
+    retriever, llm = initialize_pipeline(doc_path="./static/pdf/thesis.pdf", 
+                                            llm_str=llm_str)  # run once
+    
+    return retriever, llm
+    

@@ -1,5 +1,15 @@
+from RAGPipeline.BootPipe import initialize_pipeline
+from RAGPipeline.InitPipe import run_query
+import logging 
 import streamlit as st
 import time
+import random
+from RAGPipeline.BootPipe import boot_pipe
+from mainAssist import ragResponse
+
+
+
+    
 
 
 # page config
@@ -14,6 +24,11 @@ st.write("Ask question related to my thesis")
 # Initialize the chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    print("------ Booting -----")
+    retriever_, llm_ = boot_pipe()
+    print(" --- llm booted ---")
+    st.session_state['retriever'] = retriever_
+    st.session_state['llm'] = llm_
     
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
@@ -30,12 +45,15 @@ if prompt := st.chat_input("Questions about my thesis"):
     # add to the session
     st.session_state.messages.append({"role":"user", "content":prompt})
 
-# response = None
-
+print("--- User prompt---", prompt)
 # Display
 if prompt :
+    retriever_ = st.session_state['retriever']
+    llm_ = st.session_state['llm']
+    answer = ragResponse(query =prompt, status = True, 
+              retriever=retriever_, llm= llm_)
     time.sleep(2)
-    response = "The RAG will answer you soon"
+    # response = "The RAG will answer you soon"
     with st.chat_message("assistant"):
-        st.markdown(response)
-    st.session_state.messages.append({"role":"RAG", "content":response})
+        st.markdown(answer)
+    st.session_state.messages.append({"role":"assistant", "content":answer})
