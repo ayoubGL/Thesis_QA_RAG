@@ -16,8 +16,9 @@ from mainAssist import ragResponse
 
 st.set_page_config(page_title = "Thesis defense  Assistant")
 
-st.title("Thesis defense assistant")
+st.title("Thesis Defense Assistant")
 st.write("Ask question related to my thesis")
+st.write("by: Ayoub El Majjodi")
 
 
 
